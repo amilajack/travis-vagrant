@@ -1,11 +1,16 @@
 language: ruby
 
 rvm:
-  - "1.9.3"
+  - 1.9.3
 
 install:
   - sudo apt-get update -q
   - sudo apt-get install -q virtualbox --fix-missing
   - sudo wget -nv https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
   - sudo dpkg -i vagrant_2.1.2_x86_64.deb
-  - bundle install
+
+script:
+  - /opt/vagrant/bin/vagrant up
+  - ls
+  - /opt/vagrant/bin/vagrant ssh --command "touch /vagrant/smash_it_with_a_hammer"
+  - ls
